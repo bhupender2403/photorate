@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, intial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+	<div id="bhu">
+		<ul>
+			<li v-for="path in paths">
+				<h4> [[path]] </h4>
+			</li>
+		</ul>
+		
+		<input v-model="newpath">
+		<button v-on:click="addpath">Addnew</button>
+		
+	</div>
+	
+	<script>
+	
+	
+	
+	var v = new Vue({
+		delimiters : [ '[[', ']]' ],
+		el : '#bhu',
+		data : {
+			title : 'Welcome to My Journal from vue 3',
+			days : [ 1, 2, 3, 4, 5 ],
+			paths : [ "a/b/c", "/r/g/h", "d/y/r" ],
+			newpath:'',
+		},
+		methods:{
+			addpath: function(){
+				console.log(this.paths)
+				this.paths.push(this.newpath)
+				this.newpath=""
+			},
+			created: function(){
+				this.paths.push("/d/f/d")
+			}
+		}
+	})
+</script>
+</body>
+
+
+</html>
